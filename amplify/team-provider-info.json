@@ -10,6 +10,11 @@
       "StackName": "amplify-lmsprojectaws-dev-154218",
       "StackId": "arn:aws:cloudformation:ap-south-1:920079206663:stack/amplify-lmsprojectaws-dev-154218/b3aba3e0-b88a-11eb-8eb1-0a958bc12626",
       "AmplifyAppId": "d2vcn0yi8bjn0r"
+    },
+    "categories": {
+      "auth": {
+        "lmsprojectawsc132f26d": {}
+      }
     }
   }
 }

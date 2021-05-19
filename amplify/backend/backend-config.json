@@ -20,5 +20,13 @@
         }
       }
     }
+  },
+  "auth": {
+    "lmsprojectawsc132f26d": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
   }
 }
