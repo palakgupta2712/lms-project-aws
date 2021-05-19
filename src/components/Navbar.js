@@ -8,7 +8,7 @@ import Routes from "../Routes/Routes";
 const { SubMenu } = Menu;
 const { Header } = Layout;
 
-function Navbar() {
+function Navbar({user}) {
   return (
     <div>
     <Router>
@@ -30,7 +30,7 @@ function Navbar() {
             <Menu.Item key="4">
               <Link to="/teach">Become a teacher</Link>
             </Menu.Item>
-            <SubMenu key="sub1" icon={<UserOutlined />} title="Hi! User">
+            <SubMenu key="sub1" icon={<UserOutlined />} title={"Hi, " +  user.attributes.name}>
               <Menu.Item>View Profile</Menu.Item>
               <Menu.Item>Settings</Menu.Item>
               <Menu.Item>Logout</Menu.Item>
