@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Auth } from 'aws-amplify';
 import "../index.css";
 import "antd/dist/antd.css";
 import { Menu, Layout } from "antd";
@@ -9,6 +10,16 @@ const { SubMenu } = Menu;
 const { Header } = Layout;
 
 function Navbar({user}) {
+
+  async function signOut() {
+    try {
+        await Auth.signOut();
+        window.location.reload();
+    } catch (error) {
+        console.log('error signing out: ', error);
+    }
+}
+
   return (
     <div>
     <Router>
@@ -33,7 +44,9 @@ function Navbar({user}) {
             <SubMenu key="sub1" icon={<UserOutlined />} title={"Hi, " +  user.attributes.name}>
               <Menu.Item>View Profile</Menu.Item>
               <Menu.Item>Settings</Menu.Item>
-              <Menu.Item>Logout</Menu.Item>
+              <Menu.Item onClick={signOut}>
+                Logout 
+              </Menu.Item>
             </SubMenu>
           </Menu>
         </Header>
@@ -45,4 +58,4 @@ function Navbar({user}) {
   );
 }
 
-export default Navbar;
+export default Navbar
