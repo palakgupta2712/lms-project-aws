@@ -28,5 +28,21 @@
       "dependsOn": [],
       "customAuth": false
     }
+  },
+  "function": {
+    "postconflambda": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "api",
+          "resourceName": "lmsprojectaws",
+          "attributes": [
+            "GraphQLAPIIdOutput"
+          ]
+        }
+      ]
+    }
   }
 }
