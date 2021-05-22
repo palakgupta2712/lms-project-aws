@@ -42,7 +42,9 @@ function Navbar({user}) {
               <Link to="/teach">Become a teacher</Link>
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title={"Hi, " +  user.attributes.name}>
-              <Menu.Item>View Profile</Menu.Item>
+              <Menu.Item> 
+                <Link to="/profile">View Profile </Link>
+              </Menu.Item>
               <Menu.Item>Settings</Menu.Item>
               <Menu.Item onClick={signOut}>
                 Logout 
