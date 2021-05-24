@@ -7,7 +7,7 @@ const { Content } = Layout;
 function Profile() {
   const [userID, setUserID] = useState();
   // const [ name, setName ] = useState();
-  const [result, setResult] = useState();
+  const [result, setResult] = useState([]);
 
   useEffect(() => {
     Auth.currentAuthenticatedUser().then((user) => {
@@ -36,8 +36,8 @@ function Profile() {
             backgroundColor: "pink"
           }}
         >
-          {result.map((res) => (
-            <div style={{
+          {result.map((res, index) => (
+            <div key={index} style={{
                 display: 'flex',
                 padding: '20px',
                 alignContent: 'center',
@@ -49,7 +49,6 @@ function Profile() {
                 size="large"
               >
                 {res.name.split(" ")[0].charAt(0)}
-                {res.name.split(" ")[1].charAt(0)}
               </Avatar>
               <h1>{res.name}</h1>
             </div>
