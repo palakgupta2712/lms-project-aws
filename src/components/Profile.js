@@ -26,7 +26,7 @@ function Profile() {
 
   return (
     <div>
-      <p>{JSON.stringify(result)}</p>
+      {/* <p>{JSON.stringify(result)}</p> */}
       <Layout>
         <Content
           style={{
