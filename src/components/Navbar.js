@@ -1,60 +1,70 @@
 import React from "react";
-import { BrowserRouter as Router, Link } from "react-router-dom";
-import { Auth } from 'aws-amplify';
 import "../index.css";
-import "antd/dist/antd.css";
-import { Menu, Layout } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import theme from "../theme";
+import {
+  AppBar,
+  CssBaseline,
+  ThemeProvider,
+  Toolbar,
+  IconButton,
+  Typography
+} from "@material-ui/core";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import { makeStyles } from "@material-ui/core/styles";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 import Routes from "../Routes/Routes";
-const { SubMenu } = Menu;
-const { Header } = Layout;
 
-function Navbar({user}) {
+const useStyles = makeStyles((theme) => ({
+  navItem: {
+    letterSpacing: "2.5px",
+    marginRight: theme.spacing(2)
+  },
+  navLink: {
+    textDecoration: "none",
+    color: "white"
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1,
+    marginLeft: theme.spacing(3)
+  }
+}));
 
-  async function signOut() {
-    try {
-        await Auth.signOut();
-        window.location.reload();
-    } catch (error) {
-        console.log('error signing out: ', error);
-    }
-}
+function Navbar() {
+  const classes = useStyles();
 
   return (
     <div>
-    <Router>
-      <Layout>
-        <Header theme="light">
-          <span className="logo">
-            <Link to="/"> LOGO </Link>
-          </span>
-          <Menu theme="dark" mode="horizontal" style={{float:"right"}}>
-            <Menu.Item key="1">
-              <Link to="/home">Home</Link>
-            </Menu.Item>
-            <Menu.Item key="2">
-              <Link to="/explore">Explore</Link>
-            </Menu.Item>
-            <Menu.Item key="3">
-              <Link to="/teach">Become a teacher</Link>
-            </Menu.Item>
-            <SubMenu key="sub1" icon={<UserOutlined />} title={"Hi, " +  user.attributes.name}>
-              <Menu.Item> 
-                <Link to="/profile">View Profile </Link>
-              </Menu.Item>
-              <Menu.Item>Settings</Menu.Item>
-              <Menu.Item onClick={signOut}>
-                Logout 
-              </Menu.Item>
-            </SubMenu>
-          </Menu>
-        </Header>
-      </Layout>
-      <Routes />
-    </Router>
+      <CssBaseline />
+      <ThemeProvider theme={theme}>
+        <Router>
+          <AppBar position="static" color="primary">
+            <Toolbar>
+              <Typography variant="h5" className={classes.title}>
+                LOGO
+              </Typography>
+              <Typography className={classes.navItem}>
+                <Link to="/home" className={classes.navLink}>
+                  Home
+                </Link>
+              </Typography>
+              <Typography className={classes.navItem}>
+                <Link to="/explore" className={classes.navLink}>
+                  Explore
+                </Link>
+              </Typography>
+              <IconButton color="inherit" className={classes.menuButton}>
+                <AccountCircle />
+              </IconButton>
+            </Toolbar>
+          </AppBar>
+          <Routes />
+        </Router>
+      </ThemeProvider>
     </div>
-
   );
 }
 
-export default Navbar
+export default Navbar;
