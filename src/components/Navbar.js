@@ -33,12 +33,9 @@ function Navbar({user}) {
               <Link to="/home">Home</Link>
             </Menu.Item>
             <Menu.Item key="2">
-              <Link to="/posts">Posts</Link>
+              <Link to="/explore">Explore</Link>
             </Menu.Item>
             <Menu.Item key="3">
-              <Link to="/courses">Courses</Link>
-            </Menu.Item>
-            <Menu.Item key="4">
               <Link to="/teach">Become a teacher</Link>
             </Menu.Item>
             <SubMenu key="sub1" icon={<UserOutlined />} title={"Hi, " +  user.attributes.name}>

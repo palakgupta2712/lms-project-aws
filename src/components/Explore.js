@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Courses() {
+function Explore() {
     return (
         <div>
-            <h1>Courses</h1>
+            Explore
         </div>
     )
 }
 
-export default Courses
+export default Explore
