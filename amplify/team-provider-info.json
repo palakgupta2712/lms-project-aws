@@ -18,7 +18,7 @@
       "function": {
         "postconflambda": {
           "deploymentBucketName": "amplify-lmsprojectaws-dev-154218-deployment",
-          "s3Key": "amplify-builds/postconflambda-6d6e416438766d534d4b-build.zip"
+          "s3Key": "amplify-builds/postconflambda-476d7439554d31747347-build.zip"
         }
       }
     }
