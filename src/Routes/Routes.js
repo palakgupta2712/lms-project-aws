@@ -5,6 +5,7 @@ import Teach from "../components/Teach"
 import Profile from '../components/Profile'
 import Explore from "../components/Explore";
 import ProfileDetails from '../components/ProfileDetails'
+import CreateCourse from '../components/CreateCourse'
 function Routes() {
   return (
     <div>
@@ -14,6 +15,7 @@ function Routes() {
             <Route exact path='/teach' component={Teach} />
             <Route exact path='/profile' component={Profile} />
             <Route path='/profile/:id' component={ProfileDetails} />
+            <Route exact path='/course/new' component={CreateCourse} />
         </Switch>
     </div>
   );
