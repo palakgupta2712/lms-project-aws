@@ -6,11 +6,13 @@ import Explore from "../components/Explore";
 import NewCourse from "../course/NewCourse";
 import Courses from "../course/Courses";
 import CourseDetail from "../course/CourseDetail";
-
+import Login from "../auth/Login";
+import LandingPage from '../components/LandingPage'
 function Routes() {
   return (
     <div>
         <Switch>
+            <Route exact path='/' component={LandingPage} />
             <Route exact path='/home' component={Home} />
             <Route exact path='/explore' component={Explore} />
             <Route exact path='/teach' component={Teach} />
