@@ -3,7 +3,6 @@ import Amplify from "aws-amplify";
 import { AmplifyAuthenticator, AmplifySignUp } from "@aws-amplify/ui-react";
 import { AuthState, onAuthUIStateChange } from "@aws-amplify/ui-components";
 import awsconfig from "../aws-exports";
-import Home from "../components/Home";
 import { Redirect } from "react-router";
 Amplify.configure(awsconfig);
 

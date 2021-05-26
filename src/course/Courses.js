@@ -4,14 +4,18 @@ import { Course } from "../models";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Avatar,
+  Button,
   Card,
   CardContent,
   CardHeader,
   CssBaseline,
   Grid,
-  Typography
+  Typography,
+  Paper,
+  Box
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import addCourse from "../addCourse.png";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%"
@@ -25,6 +29,11 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     background: theme.palette.secondary.main
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary
   }
 }));
 
@@ -44,41 +53,84 @@ function Courses() {
     <React.Fragment>
       <CssBaseline />
       <div className={classes.grid}>
-        <Grid container spacing={3}>
-          {courses.map((course) => (
-            <Grid item xs={6} sm={3}>
-              <Card className={classes.root}>
-                <Link to={`/course/${course.id}`} className={classes.link}>
-                  <CardHeader
-                    avatar={
-                      <Avatar aria-label="recipe" className={classes.avatar}>
-                        {course.createdBy.charAt(0).toUpperCase()}
-                      </Avatar>
-                    }
-                    title={course.title}
-                    subheader={"By " + course.createdBy}
-                  />
-                </Link>
-                <img
-                  src="https://source.unsplash.com/collection/4676376/"
-                  width="auto"
-                  height="200px"
-                  alt="code"
-                />
-
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
+        {courses ? (
+          <div className={classes.root}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Box style={{ float: "right" }}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    href="/teach/course/new"
                   >
-                    {course.desc}
-                  </Typography>
-                </CardContent>
-              </Card>
+                    + ADD COURSE
+                  </Button>
+                </Box>
+              </Grid>
+              {courses.map((course) => (
+                <Grid item xs={6} sm={3}>
+                  <Card className={classes.root}>
+                    <Link to={`/course/${course.id}`} className={classes.link}>
+                      <CardHeader
+                        avatar={
+                          <Avatar
+                            aria-label="recipe"
+                            className={classes.avatar}
+                          >
+                            {course.createdBy.charAt(0).toUpperCase()}
+                          </Avatar>
+                        }
+                        title={course.title}
+                        subheader={"By " + course.createdBy}
+                      />
+                    </Link>
+                    <img
+                      src="https://source.unsplash.com/collection/4676376/"
+                      width="auto"
+                      height="200px"
+                      alt="code"
+                    />
+
+                    <CardContent>
+                      <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                      >
+                        {course.desc}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
             </Grid>
-          ))}
-        </Grid>
+          </div>
+        ) : (
+          <div className={classes.root}>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <Paper className={classes.paper}>
+                  <img
+                    src={addCourse}
+                    alt="add-course"
+                    height="350px"
+                    width="350px"
+                  />
+                  <Typography variant="subtitle2" gutterBottom>
+                    Create new course by adding videos, notes, pdf for users.
+                  </Typography>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    href="/teach/course/new/"
+                  >
+                    + ADD COURSES
+                  </Button>
+                </Paper>
+              </Grid>
+            </Grid>
+          </div>
+        )}
       </div>
     </React.Fragment>
   );

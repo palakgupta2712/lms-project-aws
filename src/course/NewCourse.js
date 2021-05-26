@@ -59,7 +59,7 @@ function NewCourse() {
     history.push("/courses");
   }
   function handleCancel() {
-    history.push("/home");
+    history.push("/courses");
   }
   return (
     <React.Fragment>
