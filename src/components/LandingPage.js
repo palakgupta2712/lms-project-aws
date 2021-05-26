@@ -26,7 +26,7 @@ function LandingPage() {
 
   return (
     <div>
-      <Grid container xs className={classes.root}>
+      <Grid container className={classes.root}>
         <Grid item xs={7} style={{ padding: "25px" }}>
           <Typography variant="h3">
             {" "}
