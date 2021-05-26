@@ -13,6 +13,7 @@ import {
   ListItemText
 } from "@material-ui/core";
 import ImageIcon from "@material-ui/icons/Image";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -41,15 +42,17 @@ function Courses() {
             <List className={classes.root}>
               {courses.map((course) => (
                 <ListItem key={course.id}>
-                  <ListItemAvatar>
-                    <Avatar style={{ background: "white" }}>
-                      <ImageIcon color="primary" />
-                    </Avatar>
-                  </ListItemAvatar>
-                  <ListItemText
-                    primary={course.title}
-                    secondary={course.desc.substring(0, 25)}
-                  />
+                  <Link to={`/course/${course.id}`}>
+                    <ListItemAvatar>
+                      <Avatar style={{ background: "white" }}>
+                        <ImageIcon color="primary" />
+                      </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary={course.title}
+                      secondary={course.desc.substring(0, 25)}
+                    />
+                  </Link>
                 </ListItem>
               ))}
             </List>
