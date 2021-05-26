@@ -53,18 +53,19 @@ function Courses() {
     <React.Fragment>
       <CssBaseline />
       <div className={classes.grid}>
-        {courses ? (
+        {courses.length>0 ? (
           <div className={classes.root}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Box style={{ float: "right" }}>
+                  <Link to='/teach/course/new' className={classes.link}>
                   <Button
                     variant="contained"
                     color="primary"
-                    href="/teach/course/new"
                   >
                     + ADD COURSE
                   </Button>
+                  </Link>
                 </Box>
               </Grid>
               {courses.map((course) => (
@@ -119,13 +120,14 @@ function Courses() {
                   <Typography variant="subtitle2" gutterBottom>
                     Create new course by adding videos, notes, pdf for users.
                   </Typography>
+                  <Link to='/teach/course/new' className={classes.link}>
                   <Button
                     variant="contained"
                     color="primary"
-                    href="/teach/course/new/"
                   >
-                    + ADD COURSES
+                    + ADD COURSE
                   </Button>
+                  </Link>
                 </Paper>
               </Grid>
             </Grid>
