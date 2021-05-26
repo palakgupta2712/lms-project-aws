@@ -4,20 +4,27 @@ import { Course } from "../models";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Avatar,
-  Box,
-  Container,
+  Card,
+  CardContent,
+  CardHeader,
   CssBaseline,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText
+  Grid,
+  Typography
 } from "@material-ui/core";
-import ImageIcon from "@material-ui/icons/Image";
 import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
-    backgroundColor: theme.palette.secondary.main
+    width: "100%"
+  },
+  grid: {
+    flexGrow: 1,
+    padding: "30px"
+  },
+  link: {
+    textDecoration: "none"
+  },
+  avatar: {
+    background: theme.palette.secondary.main
   }
 }));
 
@@ -36,29 +43,43 @@ function Courses() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="md">
-        <Box component="div" style={{ padding: "50px" }}>
-          {courses && (
-            <List className={classes.root}>
-              {courses.map((course) => (
-                <ListItem key={course.id}>
-                  <Link to={`/course/${course.id}`}>
-                    <ListItemAvatar>
-                      <Avatar style={{ background: "white" }}>
-                        <ImageIcon color="primary" />
+      <div className={classes.grid}>
+        <Grid container spacing={3}>
+          {courses.map((course) => (
+            <Grid item xs={6} sm={3}>
+              <Card className={classes.root}>
+                <Link to={`/course/${course.id}`} className={classes.link}>
+                  <CardHeader
+                    avatar={
+                      <Avatar aria-label="recipe" className={classes.avatar}>
+                        {course.createdBy.charAt(0).toUpperCase()}
                       </Avatar>
-                    </ListItemAvatar>
-                    <ListItemText
-                      primary={course.title}
-                      secondary={course.desc.substring(0, 25)}
-                    />
-                  </Link>
-                </ListItem>
-              ))}
-            </List>
-          )}
-        </Box>
-      </Container>
+                    }
+                    title={course.title}
+                    subheader={"By " + course.createdBy}
+                  />
+                </Link>
+                <img
+                  src="https://source.unsplash.com/collection/4676376/"
+                  width="auto"
+                  height="200px"
+                  alt="code"
+                />
+
+                <CardContent>
+                  <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    component="p"
+                  >
+                    {course.desc}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </div>
     </React.Fragment>
   );
 }

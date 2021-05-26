@@ -18,7 +18,7 @@ const Login = () => {
  
   return authState === AuthState.SignedIn ? (
     <div>
-     <Redirect to='/home' />
+     <Redirect to='/courses' />
     </div>
   ) : (
     <div>

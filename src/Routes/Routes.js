@@ -13,15 +13,15 @@ function Routes() {
     <div>
         <Switch>
             <Route exact path='/' component={LandingPage} />
-            <Route exact path='/home' component={Home} />
-            <Route exact path='/explore' component={Explore} />
-            <Route exact path='/teach' component={Teach} />
+            <Route exact path='/home/' component={Home} />
+            <Route exact path='/explore/' component={Explore} />
+            <Route exact path='/teach/' component={Teach} />
   
-            <Route exact path='/teach/course/new' component={NewCourse} />
-            <Route exact path='/courses' component={Courses} />
-            <Route exact path='/course/:id' component={CourseDetail} />
+            <Route exact path='/teach/course/new/' component={NewCourse} />
+            <Route exact path='/courses/' component={Courses} />
+            <Route exact path='/course/:id/' component={CourseDetail} />
 
-            <Route exact path='/sign-in' component={SignIn} />
+            <Route exact path='/sign-in/' component={SignIn} />
         </Switch>
     </div>
   );
